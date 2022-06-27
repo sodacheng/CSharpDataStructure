@@ -111,6 +111,84 @@ namespace DataStructure
             data[index] = newE;
         }
 
+        /// <summary>
+        /// 包含
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        public bool Contains(int e)
+        {
+            for(int i = 0; i< N; i++)
+            {
+                if (data[i] == e)
+                    return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 搜索
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        public int IndexOf(int e)
+        {
+            for (int i = 0; i < N; i++)
+            {
+                if (data[i] == e)
+                    return i;
+            }
+            return -1;
+        }
+
+        /// <summary>
+        /// 删除数组中指定位置的元素
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public int RemoveAt(int index)
+        {
+            if (index < 0 || index >= N)
+                throw new ArgumentException("数组索引越界");
+            int del = data[index];
+
+            for(int i = index+1; i<= N-1; i++)
+            {
+                data[i - 1] = data[i];
+            }
+            N--;
+
+            data[N] = default(int); // 回收空间
+
+            return del;
+        }
+
+        public int RemoveFirst()
+        {
+            return RemoveAt(0);
+        }
+
+        public int RemoveLast()
+        {
+            return RemoveAt(N - 1);
+        }
+
+        /// <summary>
+        /// 明确删除具体哪个元素
+        /// </summary>
+        /// <param name="e"></param>
+        public void Remove(int e)
+        {
+            int index = IndexOf(e);
+            if(index != -1)
+            {
+                RemoveAt(index);
+            }
+        }
+        
+
+
+
         // 重写ToString()
         public override string ToString()
         {

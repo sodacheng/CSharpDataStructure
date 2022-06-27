@@ -25,6 +25,10 @@ namespace DataStructure
             a.Set(0, 1000);
 
             Console.WriteLine(a.GetFirst());
+            a.RemoveFirst();
+            a.RemoveLast();
+            a.Remove(2);
+            Console.WriteLine(a);
         }
     }
 }
