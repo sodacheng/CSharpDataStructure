@@ -76,5 +76,56 @@ namespace DataStructure
             Add(0, e);
         }
 
+        /// <summary>
+        /// 根据索引返回查询结果
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public int Get(int index)
+        {
+            if (index < 0 || index >= N)
+                throw new ArgumentException("数组索引越界");
+            return data[index];
+        }
+
+        public int GetFirst()
+        {
+            return Get(0);
+        }
+
+        public int GetLast()
+        {
+            return Get(N - 1);
+        }
+
+        /// <summary>
+        /// 更改索引位置的元素
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="newE"></param>
+        /// <exception cref="ArgumentException"></exception>
+        public void Set(int index, int newE)
+        {
+            if (index < 0 || index >= N)
+                throw new ArgumentException("数组索引越界");
+            data[index] = newE;
+        }
+
+        // 重写ToString()
+        public override string ToString()
+        {
+            StringBuilder res = new StringBuilder();
+            res.Append(string.Format("Array1: count = {0}, capacity{1}\n", N, data.Length));
+            res.Append("[");
+            for(int i  = 0; i < N; i++)
+            {
+                res.Append(data[i]);
+                if (i != N - 1) // 不是最后一个元素,我们给一个分隔符
+                    res.Append(", ");
+            }
+            res.Append("]");
+            return res.ToString();
+        }
+
     }
 }

@@ -6,28 +6,25 @@ namespace DataStructure
     {
         static void Main(string[] args)
         {
-            int[] arr = new int[10]; // 创建了一个int类型的数组 容量为10
+            Array1 a = new Array1(20);
+            
             for(int i = 0; i < 10; i++)
             {
-                arr[i] = i; 
-                Console.WriteLine(arr[i]+" ");
+                a.AddLast(i);
             }
 
-            // 使用动态数组 ArrayList
-            ArrayList a = new ArrayList(10);// 可以传入一个参数来指定动态数组容量的大下, 不传的话具备一个默认的容量
-            for(int i = 0; i < 15; i++) // 动态数具备自动扩容的能力
-            {
-                a.Add(i);
-                Console.WriteLine(a[i]+" ");
-            }
+            a.AddFirst(66);
+            Console.WriteLine(a);
 
-            // List<T>
-            List<int> l = new List<int>(10);
-            for(int i = 0; i<15;i++)
-            {
-                l.Add(i);
-                Console.WriteLine(l[i]);
-            }    
+            a.Add(2, 27);
+            Console.WriteLine(a);
+
+            Console.WriteLine(a.GetLast());
+            Console.WriteLine(a.GetFirst());
+
+            a.Set(0, 1000);
+
+            Console.WriteLine(a.GetFirst());
         }
     }
 }
